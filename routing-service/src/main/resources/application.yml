@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: zuul-routing-service
+
+server:
+  port: 8303
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+  routes:
+    db-service:
+      path: /db-service/**
+      url: http://${DB2_SERVICE_HOST:localhost}:8300
+      #e.g. http://localhost:8303/api/stock-service/rest/stock/bob
+    stock-service:
+      path: /stock-service/**
+      url: http://${STOCK_SERVICE_HOST:localhost}:8301

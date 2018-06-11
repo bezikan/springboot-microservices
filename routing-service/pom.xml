@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.oceanboa.stock</groupId>
-	<artifactId>stock-service</artifactId>
+	<artifactId>routing-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>stock-service</name>
+	<name>routing-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -26,21 +26,13 @@
 	</properties>
 
 	<dependencies>
-
-
-		<dependency>
-			<groupId>com.yahoofinance-api</groupId>
-			<artifactId>YahooFinanceAPI</artifactId>
-			<version>3.13.0</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
 
 		<dependency>

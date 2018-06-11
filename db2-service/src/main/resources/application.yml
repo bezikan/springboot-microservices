@@ -1,0 +1,10 @@
+
+eureka:
+  instance:
+    hostname: ${DB2_SERVICE_HOST:localhost}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVICE_HOST:localhost}:8302/eureka/
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
