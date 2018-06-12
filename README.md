@@ -21,12 +21,16 @@ REACT_APP_SBM_SERVERNAME=<server name > e.g. http://api.example.com
 yarn run build
 ```
 
-## Run docker compose file
+## Launch Docker Java JarsRun docker compose file
 
 ```
+
+./builddockerfiles.sh
+
 #where your index.html from previous build step is being served
 export FRONTEND_HOSTNAME=<server name>  http://example.com
-docker-compose up
+
+docker-compose up -d
 ```
 
 

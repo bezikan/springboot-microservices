@@ -3,13 +3,14 @@ services:
 
   eureka-service:
     image: sbm/eureka-service:v1
-    ports:
-      - "8302:8302"
+    # ports:
+    #   - "8302:8302"
 
   routing-service:
     image: sbm/routing-service:v1
     ports:
-      - "8303:8303"
+      # - "8303:8303"
+      - "127.0.0.1:8303:8303"
     environment:
       STOCK_SERVICE_HOST: "stock-service"
       DB2_SERVICE_HOST: "db2-service"
@@ -17,8 +18,8 @@ services:
 
   stock-service:
     image: sbm/stock-service:v1
-    ports:
-      - "8301:8301"
+    # ports:
+    #   - "8301:8301"
     environment:
         STOCK_SERVICE_HOST: "stock-service"
         EUREKA_SERVICE_HOST: "eureka-service"
@@ -28,10 +29,9 @@ services:
 
   db2-service:
     image: sbm/db2-service:v1
-    ports:
-      - "8300:8300"
+    # ports:
+    #   - "8300:8300"
     environment:
-      # DB_HOST: "mysql"
        DB_HOST: "mysql-service"
        DB2_SERVICE_HOST: "db2-service"
        EUREKA_SERVICE_HOST: "eureka-service"
@@ -57,8 +57,8 @@ services:
        MYSQL_DATABASE: db_example 
 
     command: --lower_case_table_names=1 --init-connect='GRANT CREATE USER ON *.* TO 'root'@'%';FLUSH PRIVILEGES;'
-    ports:
-      - "3306:3306" 
+    # ports:
+    #   - "3306:3306" 
     volumes:
       - /tmp:/tmp
     
