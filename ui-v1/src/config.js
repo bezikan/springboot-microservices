@@ -1,4 +1,4 @@
 
 export default {
-  SERVER_NAME: process.env.SBM_UI_V1_SERVERNAME || "http://localhost:8303"
+  SERVER_NAME: process.env.REACT_APP_SBM_SERVERNAME
 }

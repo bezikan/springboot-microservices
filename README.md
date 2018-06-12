@@ -46,6 +46,7 @@ docker run -p 3306:3306 -v /tmp:/tmp --name db --detach -e MYSQL_ROOT_PASSWORD="
 
 ```
 cd ui-v1
-export SBM_UI_V1_SERVERNAME=<server name > e.g. http://example.com
+cat > .env
+REACT_APP_SBM_SERVERNAME=<server name > e.g. http://example.com
 yarn run build
 ```
