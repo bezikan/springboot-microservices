@@ -16,6 +16,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.List;
+
 
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -31,6 +33,9 @@ public class DB2ServiceApplication {
 	}
 
     @Autowired
+    private QuotesRepository quotesRepository;
+
+    @Autowired
     private Environment env;
 
 	@Bean
@@ -39,7 +44,7 @@ public class DB2ServiceApplication {
 			// save a couple of customers
 			repository.save(new Quote("Bob", "GOOG"));
 			repository.save(new Quote("Bob", "MSFT"));
-			repository.save(new Quote("Bob", "BLM"));
+			repository.save(new Quote("Bob", "TSLA"));
 
 			log.info("Initial Quotes found with findAll():");
 			log.info("-------------------------------");
