@@ -1,5 +1,23 @@
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+.stock-loader > div > div {
+  background-color: cornflowerblue
+}
+
+
+.loaderHolderBig {
+  padding: 10% 50%;
+  /* background-color:cornflowerblue;  */
+}
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
 }

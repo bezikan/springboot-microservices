@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "bootstrap": "4.0.0",
+    "loaders.css": "^0.1.2",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "react-loaders": "^3.0.1"
   },
   "devDependencies": {
     "react-scripts": "1.1.4"

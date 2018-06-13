@@ -3,9 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import config from './config.js';
 
+import '../node_modules/loaders.css/loaders.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+import Loader from 'react-loaders'
+
+
 const SERVER_NAME = config.SERVER_NAME;
+
+
+const colors = ["red", "cornflowerblue"]
+
 
 class App extends Component {
 
@@ -15,7 +23,8 @@ class App extends Component {
       quoteValue: "AAPL",
       userNameValue: "bob",
       data: [],
-      status: ""
+      status: "",
+      loading: false
     }
 
     this.handleChangeQuote = this.handleChangeQuote.bind(this);
@@ -38,6 +47,7 @@ class App extends Component {
   clearQuotes(){
     let url = SERVER_NAME+"/api/db-service/rest/db/delete/"+this.state.userNameValue;
     
+    this.setState({loading: true});
     fetch(url, {
       headers: {
         'content-type': 'application/json'
@@ -46,7 +56,8 @@ class App extends Component {
     }).then(function(response){
       response.json().then((data)=>{
         console.log(data);
-        this.setState({status: "removed all quotes: " + data.toString()})
+        this.setState({status: "removed all quotes: " + data.toString(),
+                      loading: false})
       })
 
     }.bind(this)).catch(function(err){
@@ -55,6 +66,7 @@ class App extends Component {
   }
 
   getQuotes(){
+    this.setState({loading: true});
     fetch(SERVER_NAME+"/api/stock-service/rest/stock/"+this.state.userNameValue,
   {
     // cache: 'no-cache',
@@ -67,8 +79,10 @@ class App extends Component {
     .then(function(response){
       let j = response.json();
       j.then(function(data){
-        this.setState({data: data})
-        // console.log(this.state.data);
+        this.setState(
+          {data: data,
+          loading: false})
+        
       }.bind(this))
     }.bind(this))
     .catch(function(err){
@@ -77,6 +91,7 @@ class App extends Component {
   }
 
   addStockForUserName(){
+    this.setState({loading: true});
     let url = SERVER_NAME+"/api/db-service/rest/db/add";
     let data = {
         'userName': this.state.userNameValue,
@@ -98,7 +113,9 @@ class App extends Component {
       response.json().then((data)=>{
         console.log(data);
       
-        this.setState({status: "total quotes now: " + data.toString()})
+        this.setState({
+          status: "total quotes now: " + data.toString(),
+          loading: false})
       })
 
     }.bind(this)).catch(function(err){
@@ -109,10 +126,14 @@ class App extends Component {
   
 
   render() {
+
+  
+
     return (
   <div className="App container">
         
     <div className="row">
+
 
       <div className="col-6">
         <ul className="list-group">
@@ -128,7 +149,15 @@ class App extends Component {
         <li className="list-group-item">
         
         </li>
-        <li className="list-group-item"></li>
+        <li className="list-group-item">
+          <div className="loaderHolderBig">
+            
+            <Loader type="ball-scale-multiple" active={this.state.loading}
+             color={colors[Math.floor(Math.random() * colors.length)]}
+              />
+          
+          </div>
+        </li>
         <li className="list-group-item"></li>
         <li className="list-group-item">
         <label >
@@ -166,7 +195,7 @@ class App extends Component {
       </div>
 
       { this.state.status === "" ?
-       <div> "no stat" </div> :
+       <div>  </div> :
       <div> {this.state.status} </div>
       }
 
