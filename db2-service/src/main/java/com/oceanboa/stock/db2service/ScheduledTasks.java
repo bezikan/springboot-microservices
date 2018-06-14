@@ -24,7 +24,7 @@ public class ScheduledTasks {
 
 
     //    @Scheduled(fixedRate = 5000)
-    @Scheduled(cron="0 0 9-17 * * *")
+    @Scheduled(cron="0 0 9-22 * * *")
     public void reportCurrentTime() {
         log.info("The time is now {}", dateFormat.format(new Date()));
 

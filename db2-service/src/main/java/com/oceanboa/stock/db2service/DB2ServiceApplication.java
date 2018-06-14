@@ -15,12 +15,14 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.List;
 
 
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableScheduling
 public class DB2ServiceApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(DB2ServiceApplication.class);
